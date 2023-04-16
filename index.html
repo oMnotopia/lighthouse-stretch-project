@@ -5,9 +5,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="test.css">
 </head>
-<script src="jquery-3.6.4.min.js"></script>
-<body>
 
+<body>
+<div id="graph-title">
+  Bar Chart Graph
+</div>
+<div id="graph-container">
+  <ul id="data-items">
+  </ul>
+</div>
+<div id="settings-container">
+  <div>Graph Orientation</div>
+  <select name="orientation" id="orientation-select">
+    <option value="">--Please choose an option--</option>
+    <option value="row">Vertical</option>
+    <option value="column">Horizontal</option>
+  </select>
+  <div>Value Placement</div>
+  <select name="value-placement" id="value-select">
+    <option value="">--Please choose an option--</option>
+    <option value="flex-start">Top</option>
+    <option value="center">Middle</option>
+    <option value="flex-end">Bottom</option>
+  </select>
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript" src="data.js"></script>
 </body>
 </html>
