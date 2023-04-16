@@ -4,6 +4,7 @@ var data = function(){
   var data = [1, 4, 3, 2, 5, 7, 2, 3];
   var listOfColors = ['blueviolet', 'green', 'blue', 'pink', 'palevioletred', 'crimson', 'orange']
 
+  //Determining the highest value, used in setting the height style.
   for (var item of data){
     if(!graphHeight) graphHeight = item;
     if(graphHeight && graphHeight < item){
@@ -22,11 +23,11 @@ var data = function(){
     .addClass("graph-item")
     )
     //Adding titles to each bar
-    $("#data-items").append($('<div></div>')
-    .attr({
-      id: "data-point-" + i
+    $("#bar-titles").append($('<div></div>')
+    .text('bar ' + i)
+    .css({
+      "width": "40px"
     })
-    .addClass("graph-item")
     )
 
     //Assinging values inside bars
@@ -45,7 +46,6 @@ var data = function(){
   //Change graph orientation
   $('#orientation-select').on('change', function(event) {
     $("#data-items").css("flex-direction", event.target.value)
-    console.log(event.target.value)
     if(event.target.value === 'row'){
       for (var i = 1; i <= data.length; i++){
         $("#data-point-" + i).css("height", ((data[i - 1] / graphHeight ) * 100) + "%");
