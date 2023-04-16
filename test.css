@@ -2,6 +2,12 @@
   font-size: 4rem;
 }
 
+#bar-titles{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
 #data-items{
   display: flex;
   flex-direction: row;
@@ -17,6 +23,10 @@
   width: 75%;
   bottom: 0;
   margin: auto;
+}
+
+#settings-container{
+  margin-top: 4rem;
 }
 
 .graph-item{
