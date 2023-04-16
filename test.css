@@ -1,0 +1,29 @@
+#graph-title{
+  font-size: 4rem;
+}
+
+#data-items{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+  gap: 2rem;
+  padding: 0;
+  height: 100%;
+}
+
+#graph-container{
+  height: 500px;
+  width: 75%;
+  bottom: 0;
+  margin: auto;
+}
+
+.graph-item{
+  display: flex;
+  align-self: flex-end;
+  height: 100%;
+  width: 40px;
+}
+
+
