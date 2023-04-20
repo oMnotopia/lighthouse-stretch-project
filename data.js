@@ -90,7 +90,8 @@ var printData = function(data){
 }
 
 var resetData = function() {
-  $("#data-items").empty()
+  $("#data-items").empty();
+  $("#bar-titles").empty();
 }
 
 data()
