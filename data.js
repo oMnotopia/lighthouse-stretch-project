@@ -1,7 +1,50 @@
 var data = function(){
-  var graphHeight;
 
-  var data = [1, 4, 3, 2, 5, 7, 2, 3];
+  //Get data values entered by user
+  $("#data-values-submit").on("click", function() {
+    var data = $("#data-values").val();
+    console.log(data);
+    printData(data);
+  })
+
+  //Reset values entered by user
+  $("#data-values-reset").on("click", function() {
+    resetData()
+  })
+
+
+
+  //Updating graph depending on cusomization selections
+  //Change graph orientation
+  $('#orientation-select').on('change', function(event) {
+    $("#data-items").css("flex-direction", event.target.value)
+    if(event.target.value === 'row'){
+      for (var i = 1; i <= data.length; i++){
+        $("#data-point-" + i).css("height", ((data[i - 1] / graphHeight ) * 100) + "%");
+        $("#data-point-" + i).css("width", "");
+      }
+    $(".graph-item").css("align-self", "flex-end");
+    } else {
+      for (var i = 1; i <= data.length; i++){
+        $("#data-point-" + i).css("width", ((data[i - 1] / graphHeight ) * 100) + "%");
+        $("#data-point-" + i).css("height", "");
+      }
+    $(".graph-item").css("align-self", "flex-start");
+    }
+  });
+  //Change value placement on the bar
+  $('#value-select').on('change', function(event) {
+    for (var i = 1; i <= data.length; i++){
+      $("#data-point-" + i).css("align-items", event.target.value);
+    }
+  });
+
+  //Allow users to update bar labels
+
+};
+
+var printData = function(data){
+  var graphHeight;
   var listOfColors = ['blueviolet', 'green', 'blue', 'pink', 'palevioletred', 'crimson', 'orange']
 
   //Determining the highest value, used in setting the height style.
@@ -24,9 +67,12 @@ var data = function(){
     )
     //Adding titles to each bar
     $("#bar-titles").append($('<div></div>')
+    .attr({
+      id: "bar-label-" + i
+    })
     .text('bar ' + i)
     .css({
-      "width": "40px"
+      width: "40px"
     })
     )
 
@@ -41,34 +87,11 @@ var data = function(){
       "font-weight": "bold"
     });
   }
+}
 
-  //Updating graph depending on cusomization selections
-  //Change graph orientation
-  $('#orientation-select').on('change', function(event) {
-    $("#data-items").css("flex-direction", event.target.value)
-    if(event.target.value === 'row'){
-      for (var i = 1; i <= data.length; i++){
-        $("#data-point-" + i).css("height", ((data[i - 1] / graphHeight ) * 100) + "%");
-        $("#data-point-" + i).css("width", "");
-      }
-    $(".graph-item").css("align-self", "flex-end");
-
-    } else {
-      for (var i = 1; i <= data.length; i++){
-        $("#data-point-" + i).css("width", ((data[i - 1] / graphHeight ) * 100) + "%");
-        $("#data-point-" + i).css("height", "");
-      }
-    $(".graph-item").css("align-self", "flex-start");
-    }
-  });
-  //Change value placement on the bar
-  $('#value-select').on('change', function(event) {
-    for (var i = 1; i <= data.length; i++){
-      $("#data-point-" + i).css("align-items", event.target.value);
-    }
-  });
-
-};
+var resetData = function() {
+  $("#data-items").empty()
+}
 
 data()
 
